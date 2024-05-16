@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 class GolfCourse(models.Model):
@@ -18,7 +19,9 @@ class Review(models.Model):
     golf_course = models.ForeignKey(GolfCourse, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
-    rating =  models.PositiveIntegerField()
+    rating =  models.PositiveIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
