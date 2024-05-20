@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Review
 
 # Create your views here.
-def test_blog(request):
-    return HttpResponse("testing")
+class ReviewList(generic.ListView):
+    model = Review
