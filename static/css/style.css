@@ -18,6 +18,19 @@ header {
     flex-wrap: nowrap;
 }
 
+.nav-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.nav-container .nav {
+    display: flex;
+    flex-direction: row;
+}
+
 main {
     flex: 1 0 auto;
     min-height: auto;
