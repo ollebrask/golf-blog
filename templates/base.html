@@ -1,3 +1,7 @@
+{% load static %}
+
+{% url 'home' as home_url %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +20,10 @@
         <!--Navigation for bigger screens-->
         <div class="nav-container">
             <nav class="nav d-none d-md-flex">
-                <a class="nav-link text-white" href="{% url 'index' %}">Home</a>
-                <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
-                <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
-                <a class="nav-link text-white" href="{% url 'register' %}">Register</a>
+                <a class="nav-link text-white" href="">Home</a>
+                <a class="nav-link text-white" href="">Logout</a>
+                <a class="nav-link text-white" href="">Login</a>
+                <a class="nav-link text-white" href="">Register</a>
             </nav>
         </div>
         <!--Navbar dropdown for smaller screens-->
@@ -29,10 +33,10 @@
                   Menu
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{% url 'index' %}">Home</a></li>
-                  <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-                  <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-                  <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
+                  <li><a class="dropdown-item" href="">Home</a></li>
+                  <li><a class="dropdown-item" href="">Logout</a></li>
+                  <li><a class="dropdown-item" href="">Login</a></li>
+                  <li><a class="dropdown-item" href="">Register</a></li>
                 </ul>
             </nav>
         </div>
