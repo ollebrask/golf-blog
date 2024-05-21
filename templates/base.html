@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,17 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body>
-    <header>
-        <h1></h1>
-        <div>
-            <nav>
 
+<body>
+    <header class="bg-success text-white">
+        <h1>Golf Reviews</h1>
+        <!--Navigation for bigger screens-->
+        <div class="nav-container">
+            <nav class="nav d-none d-md-flex">
+                <a class="nav-link text-white" href="{% url 'index' %}">Home</a>
+                <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
+                <a class="nav-link text-white" href="{% url 'register' %}">Register</a>
             </nav>
         </div>
 
@@ -25,6 +31,9 @@
     <footer>
         <p>2024 Golf Reviews</p>
     </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>
