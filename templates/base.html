@@ -39,9 +39,12 @@
         <div class="nav-container">
             <nav class="nav d-none d-md-flex">
                 <a class="nav-link text-white" href="" aria-label="Go to Home page">Home</a>
-                <a class="nav-link text-white" href="" aria-label="Logout">Logout</a>
-                <a class="nav-link text-white" href="" aria-label="Login">Login</a>
-                <a class="nav-link text-white" href="" aria-label="Register account page">Register</a>
+                {% if user.is_authenticated %}
+                    <a class="nav-link text-white" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
+                {% else %}
+                    <a class="nav-link text-white" href="{% url 'account_login' %}" aria-label="Login">Login</a>
+                    <a class="nav-link text-white" href="{% url 'account_signup' %}" aria-label="Register account page">Register</a>
+                {% endif %}
             </nav>
         </div>
         <!--Navbar dropdown for smaller screens-->
@@ -52,9 +55,12 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
                   <li><a class="dropdown-item" href="" aria-label="Go to Home page">Home</a></li>
-                  <li><a class="dropdown-item" href="" aria-label="Logout">Logout</a></li>
-                  <li><a class="dropdown-item" href="" aria-label="Login">Login</a></li>
-                  <li><a class="dropdown-item" href="" aria-label="Register account page">Register</a></li>
+                  {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
+                  {% else %}
+                    <li><a class="dropdown-item" href="{% url 'account_login' %}" aria-label="Login">Login</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_signup' %}" aria-label="Register account page">Register</a></li>
+                  {% endif %}
                 </ul>
             </nav>
         </div>
