@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Review
 
@@ -20,4 +20,4 @@ def show_reviews(request):
 def review_detail(request, review_id):
     # https://www.geeksforgeeks.org/get_object_or_404-method-in-django-models/
     review = get_object_or_404(Review, id=review_id)
-    return render(request, 'review_detail.html', {'review': review})
+    return render(request, 'blog/review_detail.html', {'review': review})
