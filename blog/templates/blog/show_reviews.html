@@ -23,16 +23,14 @@ All Reviews
         {% endfor %}
     </div>
     <div class="pagination">
-            {% if reviews_page.has_previous %}
-                <a href="?page={{ reviews_page.previous_page_number }}">previous</a>
-            {% endif %}
-
             <span>
-                Page {{ reviews_page.number }} of {{ reviews_page.paginator.num_pages }}.
+                Page {{ reviews_page.number }} of {{ reviews_page.paginator.num_pages }}. 
             </span>
-
+            {% if reviews_page.has_previous %}
+                <a href="?page={{ reviews_page.previous_page_number }}">&laquo; Previous </a>
+            {% endif %}
             {% if reviews_page.has_next %}
-                <a href="?page={{ reviews_page.next_page_number }}">next</a>
+                <a href="?page={{ reviews_page.next_page_number }}"> Next &raquo;</a>
             {% endif %}
     </div>
 </div>
