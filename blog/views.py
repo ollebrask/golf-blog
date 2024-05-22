@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Review
+from .forms import ReviewForm
 
 # Create your views here.
 def index(request):
@@ -21,3 +23,15 @@ def review_detail(request, review_id):
     # https://www.geeksforgeeks.org/get_object_or_404-method-in-django-models/
     review = get_object_or_404(Review, id=review_id)
     return render(request, 'blog/review_detail.html', {'review': review})
+
+def add_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.save()
+            return redirect('show_reviews')
+    else:
+        form = ReviewForm()
+    return render(request, 'add_review.html', {'form': form})
