@@ -15,3 +15,9 @@ def show_reviews(request):
     reviews_page = paginator.get_page(page_number)
 
     return render(request, 'blog/show_reviews.html', {'reviews_page': reviews_page})
+
+# To show a certain review upscaled and with content.abs
+def review_detail(request, review_id):
+    # https://www.geeksforgeeks.org/get_object_or_404-method-in-django-models/
+    review = get_object_or_404(Review, id=review_id)
+    return render(request, 'review_detail.html', {'review': review})
