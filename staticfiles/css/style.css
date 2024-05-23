@@ -35,3 +35,14 @@ main {
     flex: 1 0 auto;
     min-height: auto;
 }
+
+/*style for pagination*/
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #28a745;
+}
+
+.pagination span {
+    margin: 0 10px;
+}
