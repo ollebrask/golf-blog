@@ -22,6 +22,7 @@ All Reviews
                     <p class="card-text">Rating: {{ review.rating }}</p>
                     <p class="card-text"><small class="text-muted">By: {{ review.user.username }}</small></p>
                     <a href="{% url 'review_detail' review.id %}" class="btn btn-success">Read More</a>
+                    <a href="{% url 'edit_review' review.id %}" class="btn btn-secondary">Edit</a>
                 </div>
             </div>
         </div>
