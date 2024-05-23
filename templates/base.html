@@ -40,7 +40,7 @@
             <nav class="nav d-none d-md-flex">
                 <a class="nav-link text-white" href="{% url 'home' %}" aria-label="Go to Home page">Home</a>
                 <a class="nav-link text-white" href="{% url 'show_reviews' %}" aria-label="View all reviews">Reviews</a>
-                <a class="nav-link text-white" href="{% url 'show_golfcourses' %}" aria-label="View all reviews">Golf Courses</a>
+                <a class="nav-link text-white" href="{% url 'show_golfcourses' %}" aria-label="View all golf courses">Golf Courses</a>
                 {% if user.is_authenticated %}
                     <a class="nav-link text-white" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
                 {% else %}
@@ -58,7 +58,7 @@
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
                   <li><a class="dropdown-item" href="{% url 'home' %}" aria-label="Go to Home page">Home</a></li>
                   <li><a class="dropdown-item" href="{% url 'show_reviews' %}" aria-label="View all reviews">Reviews</a></li>
-                  <li><a class="dropdown-item" href="{% url 'show_golfcourses' %}" aria-label="View all reviews">Golf Courses</a></li>
+                  <li><a class="dropdown-item" href="{% url 'show_golfcourses' %}" aria-label="View all golf courses">Golf Courses</a></li>
                   {% if user.is_authenticated %}
                     <li><a class="dropdown-item" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
                   {% else %}
