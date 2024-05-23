@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Review
 from .forms import ReviewForm
@@ -18,12 +19,13 @@ def show_reviews(request):
 
     return render(request, 'blog/show_reviews.html', {'reviews_page': reviews_page})
 
-# To show a certain review upscaled and with content.abs
+# To show a certain review upscaled and with content.
 def review_detail(request, review_id):
     # https://www.geeksforgeeks.org/get_object_or_404-method-in-django-models/
     review = get_object_or_404(Review, id=review_id)
     return render(request, 'blog/review_detail.html', {'review': review})
 
+#To add a review.
 def add_review(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
@@ -31,6 +33,7 @@ def add_review(request):
             review = form.save(commit=False)
             review.user = request.user
             review.save()
+            messages.success(request, 'Your review has been added!')
             return redirect('show_reviews')
     else:
         form = ReviewForm()
