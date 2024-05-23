@@ -6,7 +6,7 @@ All Golf Courses
 
 {% block content %}
 <div class="container">
-    <h2>All Golf Courses</h2>
+    <h2>Golf Courses</h2>
     {% if user.is_authenticated %}
     <a href="{% url 'add_review' %}" class="btn btn-success mb-4">Add review</a>
     {% endif %}
@@ -22,7 +22,7 @@ All Golf Courses
                         <p class="card-text">Extra Facilities: {{ golfcourse.extra_facilities }}</p>
                     {% endif %}
                     {% if golfcourse.url %}
-                        <p class="card-text"><a href="{{ golfcourse.url }}" class="btn btn-info" target="_blank">Visit Website</a></p>
+                        <p class="card-text"><a href="{{ golfcourse.url }}" class="btn btn-secondary" target="_blank">Visit Website</a></p>
                     {% endif %}
                 </div>
             </div>
