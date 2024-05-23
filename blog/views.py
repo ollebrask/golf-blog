@@ -63,3 +63,12 @@ def delete_review(request, review_id):
         messages.success(request, 'Your review has been deleted!')
         return redirect('show_reviews')
     return render(request, 'blog/delete_review.html', {'review': review})
+
+#To show all golfcourses
+def show_golfcourses(request):
+    golfcourses_list = GolfCourse.objects.all()
+    paginator = Paginator(golfcourses_list, 8) 
+    page_number = request.GET.get('page')
+    golfcourses_page = paginator.get_page(page_number)
+    
+    return render(request, 'show_golfcourses.html', {'golfcourses_page': golfcourses_page})
