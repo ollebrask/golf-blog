@@ -38,10 +38,9 @@ Home Page
                         <h5 class="card-title">{{ review.title }}</h5>
                         <p class="card-text">Golf Course: {{ review.golf_course.name }}</p>
                         <p class="card-text">Rating: {{ review.rating }}</p>
-                        <p class="card-text"><small class="text-muted">Author: {{ review.user.username }}</small>
-                        </p>
-                        <a href="{% url 'review_detail' review.id %}" class="btn btn-success">Read More</a>
+                        <p class="card-text"><small class="text-muted">Author: {{ review.user.username }}</small></p>
                         <p class="card-text"><strong>Posted on:</strong> {{ review.created_on|date:"F d, Y" }}</p>
+                        <a href="{% url 'review_detail' review.id %}" class="btn btn-success">Read More</a>
                     </div>
                 </div>
             </div>
