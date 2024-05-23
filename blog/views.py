@@ -26,6 +26,7 @@ def review_detail(request, review_id):
     return render(request, 'blog/review_detail.html', {'review': review})
 
 #To add a review.
+@login_required
 def add_review(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
@@ -38,3 +39,4 @@ def add_review(request):
     else:
         form = ReviewForm()
     return render(request, 'blog/add_review.html', {'form': form})
+
