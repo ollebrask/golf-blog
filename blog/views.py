@@ -34,4 +34,4 @@ def add_review(request):
             return redirect('show_reviews')
     else:
         form = ReviewForm()
-    return render(request, 'add_review.html', {'form': form})
+    return render(request, 'blog/add_review.html', {'form': form})
