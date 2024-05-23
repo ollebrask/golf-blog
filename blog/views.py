@@ -34,9 +34,21 @@ def add_review(request):
             review = form.save(commit=False)
             review.user = request.user
             review.save()
-            messages.success(request, 'Your review has been added!')
+            messages.success(request, 'Your review has been added successfully!')
             return redirect('show_reviews')
     else:
         form = ReviewForm()
     return render(request, 'blog/add_review.html', {'form': form})
 
+#To edit a review
+@login_required
+def edit_Review(request, review_id):
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your review updated succesfully!')
+            return redirect('review_detail', review_id=review.id)
+    else:
+        form= ReviewForm(instance=review)
