@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
-from .models import Review
+from .models import Review, GolfCourse
 from .forms import ReviewForm
 
 # Create your views here.
@@ -71,4 +71,4 @@ def show_golfcourses(request):
     page_number = request.GET.get('page')
     golfcourses_page = paginator.get_page(page_number)
     
-    return render(request, 'show_golfcourses.html', {'golfcourses_page': golfcourses_page})
+    return render(request, 'blog/show_golfcourses.html', {'golfcourses_page': golfcourses_page})
