@@ -42,7 +42,7 @@ def add_review(request):
 
 #To edit a review
 @login_required
-def edit_Review(request, review_id):
+def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id, user=request.user)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
@@ -52,3 +52,4 @@ def edit_Review(request, review_id):
             return redirect('review_detail', review_id=review.id)
     else:
         form= ReviewForm(instance=review)
+    return render(request, 'blog/edit_review.html', {'form': form})
