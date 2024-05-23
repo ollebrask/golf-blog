@@ -40,6 +40,7 @@ Home Page
                         <p class="card-text">Rating: {{ review.rating }}</p>
                         <p class="card-text"><small class="text-muted">Author: {{ review.user.username }}</small>
                         </p>
+                        <a href="{% url 'review_detail' review.id %}" class="btn btn-success">Read More</a>
                         <p class="card-text"><strong>Posted on:</strong> {{ review.created_on|date:"F d, Y" }}</p>
                     </div>
                 </div>
