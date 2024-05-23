@@ -55,7 +55,8 @@
                   Menu
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="" aria-label="Go to Home page">Home</a></li>
+                  <li><a class="dropdown-item" href="{% url 'home' %}" aria-label="Go to Home page">Home</a></li>
+                  <li><a class="dropdown-item" href="{% url 'show_reviews' %}" aria-label="View all reviews">Reviews</a></li>
                   {% if user.is_authenticated %}
                     <li><a class="dropdown-item" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
                   {% else %}
