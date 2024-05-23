@@ -53,3 +53,13 @@ def edit_review(request, review_id):
     else:
         form= ReviewForm(instance=review)
     return render(request, 'blog/edit_review.html', {'form': form})
+
+#To delete a review
+@login_required
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    if request.method == 'POST':
+        review.delete()
+        messages.success(request, 'Your review has been deleted!')
+        return redirect('show_reviews')
+    return render(request, 'blog/delete_review.html', {'review': review})
