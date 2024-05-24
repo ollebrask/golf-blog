@@ -36,8 +36,8 @@ Review Detail
                 <div class="comment mb-2">
                     <p><strong>{{ comment.user.username }}</strong> - {{ comment.created_on|date:"F d, Y H:i" }}</p>
                     <p>{{ comment.content|linebreaks }}</p>
-                    {% if comment.user == reqest.user %}
-                            <a href="{% url 'edit_comment' comment_id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    {% if comment.user == request.user %}
+                            <a href="{% url 'edit_comment' comment.id %}" class="btn btn-secondary btn-sm">Edit</a>
                         {% endif %}
                 </div>
                 {% empty %}
