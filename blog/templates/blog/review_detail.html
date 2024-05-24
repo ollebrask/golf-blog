@@ -18,11 +18,42 @@ Review Detail
                     <p class="card-text">{{ review.content|safe }}</p>
                     <a href="{% url 'show_reviews' %}" class="btn btn-success">Back to Reviews</a>
                     {% if review.user == request.user %}
-                        <a href="{% url 'edit_review' review.id %}" class="btn btn-secondary">Edit</a>
-                        <a href="{% url 'delete_review' review.id %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'edit_review' review.id %}" class="btn btn-secondary">Edit</a>
+                    <a href="{% url 'delete_review' review.id %}" class="btn btn-danger">Delete</a>
                     {% endif %}
                 </div>
             </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Comments</h4>
+            <div class="comments mb-4">
+                {% for comment in comments %}
+                <div class="comment mb-2">
+                    <p><strong>{{ comment.user.username }}</strong> - {{ comment.created_on|date:"F d, Y H:i" }}</p>
+                    <p>{{ comment.content|linebreaks }}</p>
+                </div>
+                {% empty %}
+                <p>No comments yet. Be the first to comment!</p>
+                {% endfor %}
+            </div>
+
+            <hr>
+
+            <h4>Add a Comment</h4>
+            {% if user.is_authenticated %}
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="btn btn-success">Post Comment</button>
+            </form>
+            {% else %}
+            <p>You must <a href="{% url 'account_login' %}">log in</a> to post a comment.</p>
+            {% endif %}
         </div>
     </div>
 </div>

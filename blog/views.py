@@ -3,7 +3,8 @@ from django.utils.text import slugify
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
-from .models import Review, GolfCourse
+from .models import Review, GolfCourse, Comment
+from .forms import CommentForm
 from .forms import ReviewForm
 
 # Create your views here.
@@ -24,7 +25,27 @@ def show_reviews(request):
 def review_detail(request, review_id):
     # https://www.geeksforgeeks.org/get_object_or_404-method-in-django-models/
     review = get_object_or_404(Review, id=review_id)
-    return render(request, 'blog/review_detail.html', {'review': review})
+    comments = review.comment_set.all()
+
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect('account_login')
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.review = review
+            comment.user = request.user
+            comment.save()
+            messages.success(request, 'Your comment has been posted!')
+            return redirect('review_detail', review_id=review.id)
+    else:
+        comment_form = CommentForm()
+   
+    return render(request, 'blog/review_detail.html', {
+            'review': review,
+            "comments": comments,
+            "comment_form": comment_form,
+    })
 
 #To add a review.
 @login_required
