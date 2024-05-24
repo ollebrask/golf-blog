@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils.text import slugify
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -32,6 +33,7 @@ def add_review(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
+            review.slug = slugify(review.title)
             review.user = request.user
             review.save()
             messages.success(request, 'Your review has been added successfully!')
@@ -47,7 +49,9 @@ def edit_review(request, review_id):
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
-            form.save()
+            review = form.save(commit=False)
+            review.slug = slugify(review.title)
+            review.save()
             messages.success(request, 'Your review updated succesfully!')
             return redirect('review_detail', review_id=review.id)
     else:
