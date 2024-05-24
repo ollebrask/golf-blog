@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import Http404
 from django.utils.text import slugify
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -115,3 +116,18 @@ def edit_comment(request, comment_id):
         form = CommentForm(instance=comment)
 
     return render(request, 'blog/edit_comment.html', {'form': form, 'comment': comment})
+
+#To delete a comment
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.user != request.user:
+        raise Http404
+
+    if request.method == 'POST':
+        review_id = comment.review.id
+        comment.delete()
+        messages.success(request, 'Your comment has been deleted!')
+        return redirect('review_detail', review_id=review_id)
+
+    return render(request, 'blog/delete_comment.html', {'comment': comment})
