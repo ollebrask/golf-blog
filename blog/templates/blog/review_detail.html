@@ -38,6 +38,7 @@ Review Detail
                     <p>{{ comment.content|linebreaks }}</p>
                     {% if comment.user == request.user %}
                             <a href="{% url 'edit_comment' comment.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger btn-sm">Delete</a>
                         {% endif %}
                 </div>
                 {% empty %}
