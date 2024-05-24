@@ -97,3 +97,21 @@ def show_golfcourses(request):
     golfcourses_page = paginator.get_page(page_number)
     
     return render(request, 'blog/show_golfcourses.html', {'golfcourses_page': golfcourses_page})
+
+#To edit comment
+@login_required
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.user != request.user:
+        raise Http404
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your comment has been updated!')
+            return redirect('review_detail', review_id=comment.review.id)
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'blog/edit_comment.html', {'form': form, 'comment': comment})
