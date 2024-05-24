@@ -14,9 +14,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Golfcourse review website for golfers who like to read and share their reviews on popular golfcourses" />
-    <meta name="keywords"
-        content="golf, golfcourse, review, tee, golfing, golfblog, golfrating" />
+    <meta name="description"
+        content="Golfcourse review website for golfers who like to read and share their reviews on popular golfcourses" />
+    <meta name="keywords" content="golf, golfcourse, review, tee, golfing, golfblog, golfrating" />
     <meta name="author" content="Olle Brask" />
     {% comment %} Favicon {% endcomment %}
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
@@ -39,18 +39,21 @@
 
 <body>
     <header class="bg-success text-white p-3 mb-4">
-        <h1 class="h3"><a href="{% url 'home' %}" class="text-white text-decoration-none" aria-label="Go to Home page">Golf Reviews</a></h1>
+        <h1 class="h3"><a href="{% url 'home' %}" class="text-white text-decoration-none"
+                aria-label="Go to Home page">Golf Reviews</a></h1>
         <!--Navigation for bigger screens-->
         <div class="nav-container">
             <nav class="nav d-none d-md-flex">
                 <a class="nav-link text-white" href="{% url 'home' %}" aria-label="Go to Home page">Home</a>
                 <a class="nav-link text-white" href="{% url 'show_reviews' %}" aria-label="View all reviews">Reviews</a>
-                <a class="nav-link text-white" href="{% url 'show_golfcourses' %}" aria-label="View all golf courses">Golf Courses</a>
+                <a class="nav-link text-white" href="{% url 'show_golfcourses' %}"
+                    aria-label="View all golf courses">Golf Courses</a>
                 {% if user.is_authenticated %}
-                    <a class="nav-link text-white" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
+                <a class="nav-link text-white" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
                 {% else %}
-                    <a class="nav-link text-white" href="{% url 'account_login' %}" aria-label="Login">Login</a>
-                    <a class="nav-link text-white" href="{% url 'account_signup' %}" aria-label="Register account page">Register</a>
+                <a class="nav-link text-white" href="{% url 'account_login' %}" aria-label="Login">Login</a>
+                <a class="nav-link text-white" href="{% url 'account_signup' %}"
+                    aria-label="Register account page">Register</a>
                 {% endif %}
             </nav>
         </div>
@@ -58,46 +61,57 @@
         <div class="d-block d-md-none">
             <nav class="navbar navbar-expand-md">
                 <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  Menu
+                    Menu
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{% url 'home' %}" aria-label="Go to Home page">Home</a></li>
-                  <li><a class="dropdown-item" href="{% url 'show_reviews' %}" aria-label="View all reviews">Reviews</a></li>
-                  <li><a class="dropdown-item" href="{% url 'show_golfcourses' %}" aria-label="View all golf courses">Golf Courses</a></li>
-                  {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" href="{% url 'home' %}" aria-label="Go to Home page">Home</a></li>
+                    <li><a class="dropdown-item" href="{% url 'show_reviews' %}"
+                            aria-label="View all reviews">Reviews</a></li>
+                    <li><a class="dropdown-item" href="{% url 'show_golfcourses' %}"
+                            aria-label="View all golf courses">Golf Courses</a></li>
+                    {% if user.is_authenticated %}
                     <li><a class="dropdown-item" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
-                  {% else %}
+                    {% else %}
                     <li><a class="dropdown-item" href="{% url 'account_login' %}" aria-label="Login">Login</a></li>
-                    <li><a class="dropdown-item" href="{% url 'account_signup' %}" aria-label="Register account page">Register</a></li>
-                  {% endif %}
+                    <li><a class="dropdown-item" href="{% url 'account_signup' %}"
+                            aria-label="Register account page">Register</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
-
     </header>
-
     <!-- Messages Block found at http://www.stackoverflow.com -->
     <div class="container mt-4">
         {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
         {% endif %}
     </div>
-
+    <!-- Main content-->
     <main>
         {% block content %}
         {% endblock %}
     </main>
+    <!-- Footer content -->
     <footer class="bg-light text-center p-3 mt-4">
-        <p>&copy; 2024 Golf Reviews</p>
+        <div class="d-flex flex-column align-items-center">
+            <p class="mb-1">&copy; 2024 Olle Brask, for educational purposes only.</p>
+            <a href="https://github.com/ollebrask" target="_blank" rel="noopener"
+                aria-label="Visit my github page (Page opens in a new tab)" class="mt-2 no-link-color github-icon"><i
+                    class="fa-brands fa-github"></i>
+            </a>
+        </div>
     </footer>
+    <!-- Bootstrap script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <!-- Fontawesome script-->
+    <script src="https://kit.fontawesome.com/ccfe7cad8e.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
