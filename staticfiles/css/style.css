@@ -46,3 +46,16 @@ main {
 .pagination span {
     margin: 0 10px;
 }
+
+/*style for footer*/
+.fa-github {
+    font-size: 1.4em;
+}
+
+.no-link-color {
+    color: inherit;
+}
+
+.github-icon:hover {
+    color: lightgrey;
+}
