@@ -5,7 +5,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
-
+    """ ReviewAdmin """
     list_display = ('title', 'slug', 'created_on')
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
