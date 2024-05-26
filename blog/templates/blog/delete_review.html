@@ -12,7 +12,7 @@ Delete Review
     <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Delete Review</button>
-        <a href="{% url 'review_detail' review.id %}" class="btn btn-secondary">Cancel</a>
+        <a href="{% url 'review_detail' review.id %}" class="btn btn-secondary" aria-label="Cancel">Cancel</a>
     </form>
 </div>
 {% endblock %}

@@ -18,8 +18,8 @@ Review Detail
                     <p class="card-text">{{ review.content|safe }}</p>
                     <a href="{% url 'show_reviews' %}" class="btn btn-success">Back to Reviews</a>
                     {% if review.user == request.user %}
-                    <a href="{% url 'edit_review' review.id %}" class="btn btn-secondary">Edit</a>
-                    <a href="{% url 'delete_review' review.id %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'edit_review' review.id %}" class="btn btn-secondary" aria-label="Edit">Edit</a>
+                    <a href="{% url 'delete_review' review.id %}" class="btn btn-danger" aria-label="Delete">Delete</a>
                     {% endif %}
                 </div>
             </div>
@@ -37,9 +37,11 @@ Review Detail
                     <p><strong>{{ comment.user.username }}</strong> - {{ comment.created_on|date:"F d, Y H:i" }}</p>
                     <p>{{ comment.content|linebreaks }}</p>
                     {% if comment.user == request.user %}
-                            <a href="{% url 'edit_comment' comment.id %}" class="btn btn-secondary btn-sm">Edit</a>
-                            <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger btn-sm">Delete</a>
-                        {% endif %}
+                    <a href="{% url 'edit_comment' comment.id %}" class="btn btn-secondary btn-sm"
+                        aria-label="Edit">Edit</a>
+                    <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger btn-sm"
+                        aria-label="Delete">Delete</a>
+                    {% endif %}
                 </div>
                 {% empty %}
                 <p>No comments yet. Be the first to comment!</p>
@@ -56,7 +58,7 @@ Review Detail
                 <button type="submit" class="btn btn-success">Post Comment</button>
             </form>
             {% else %}
-            <p>You must <a href="{% url 'account_login' %}">log in</a> to post a comment.</p>
+            <p>You must <a href="{% url 'account_login' %}" aria-label="Login">log in</a> to post a comment.</p>
             {% endif %}
         </div>
     </div>
