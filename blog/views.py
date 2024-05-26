@@ -8,13 +8,16 @@ from .models import Review, GolfCourse, Comment
 from .forms import CommentForm
 from .forms import ReviewForm
 
+
 # Create your views here.
 def index(request):
     """
     To show the three latest reviews.
     """
     latest_reviews = Review.objects.order_by('-created_on')[:3]
-    return render(request, 'blog/index.html', {'latest_reviews': latest_reviews})
+    return render(request, 'blog/index.html', {
+        'latest_reviews': latest_reviews})
+
 
 def show_reviews(request):
     """
@@ -27,6 +30,7 @@ def show_reviews(request):
 
     return render(
         request, 'blog/show_reviews.html', {'reviews_page': reviews_page})
+
 
 def review_detail(request, review_id):
     """
@@ -48,12 +52,13 @@ def review_detail(request, review_id):
             return redirect('review_detail', review_id=review.id)
     else:
         comment_form = CommentForm()
-   
+
     return render(request, 'blog/review_detail.html', {
             'review': review,
             "comments": comments,
             "comment_form": comment_form,
     })
+
 
 @login_required
 def add_review(request):
@@ -65,11 +70,13 @@ def add_review(request):
             review.slug = slugify(review.title)
             review.user = request.user
             review.save()
-            messages.success(request, 'Your review has been added successfully!')
+            messages.success(
+                request, 'Your review has been added successfully!')
             return redirect('show_reviews')
     else:
         form = ReviewForm()
     return render(request, 'blog/add_review.html', {'form': form})
+
 
 @login_required
 def edit_review(request, review_id):
@@ -84,8 +91,9 @@ def edit_review(request, review_id):
             messages.success(request, 'Your review updated succesfully!')
             return redirect('review_detail', review_id=review.id)
     else:
-        form= ReviewForm(instance=review)
+        form = ReviewForm(instance=review)
     return render(request, 'blog/edit_review.html', {'form': form})
+
 
 @login_required
 def delete_review(request, review_id):
@@ -97,17 +105,19 @@ def delete_review(request, review_id):
         return redirect('show_reviews')
     return render(request, 'blog/delete_review.html', {'review': review})
 
-#To show all golfcourses
+
 def show_golfcourses(request):
     """
     To show all golfcourses as paginated list, 8 per page.
     """
     golfcourses_list = GolfCourse.objects.all()
-    paginator = Paginator(golfcourses_list, 8) 
+    paginator = Paginator(golfcourses_list, 8)
     page_number = request.GET.get('page')
     golfcourses_page = paginator.get_page(page_number)
-    
-    return render(request, 'blog/show_golfcourses.html', {'golfcourses_page': golfcourses_page})
+
+    return render(request, 'blog/show_golfcourses.html', {
+        'golfcourses_page': golfcourses_page})
+
 
 @login_required
 def edit_comment(request, comment_id):
@@ -125,9 +135,10 @@ def edit_comment(request, comment_id):
     else:
         form = CommentForm(instance=comment)
 
-    return render(request, 'blog/edit_comment.html', {'form': form, 'comment': comment})
+    return render(request, 'blog/edit_comment.html', {
+        'form': form, 'comment': comment})
 
-#To delete a comment
+
 @login_required
 def delete_comment(request, comment_id):
     """ To delete a comment """

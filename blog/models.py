@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
+from django.core.validators import (
+    MinValueValidator,
+    MaxValueValidator,
+    MinLengthValidator,
+)
+
 
 # Create your models here.
 class GolfCourse(models.Model):
@@ -26,6 +31,7 @@ class GolfCourse(models.Model):
     class Meta:
         ordering = ['name']
 
+
 class Review(models.Model):
     """ Review model """
     title = models.CharField(
@@ -39,16 +45,17 @@ class Review(models.Model):
     content = models.TextField(
         validators=[MinLengthValidator(10)]
     )
-    rating =  models.PositiveIntegerField(
+    rating = models.PositiveIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.title} by {self.user.username}"
-    
+
     class Meta:
         ordering = ['-created_on']
+
 
 class Comment(models.Model):
     """ Comment model """
@@ -64,6 +71,3 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['created_on']
-
-
-
