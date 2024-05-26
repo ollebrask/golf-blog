@@ -2,6 +2,7 @@ from django import forms
 from .models import Review, Comment
 
 class ReviewForm(forms.ModelForm):
+    """ ReviewForm """
     RATING_CHOICES = [
         (1, '1'),
         (2, '2'),
@@ -17,6 +18,7 @@ class ReviewForm(forms.ModelForm):
         fields = ['title', 'golf_course', 'content', 'rating']
 
 class CommentForm(forms.ModelForm):
+    """ CommentForm """
     class Meta:
         model = Comment
         fields = ['content']

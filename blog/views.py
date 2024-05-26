@@ -10,21 +10,28 @@ from .forms import ReviewForm
 
 # Create your views here.
 def index(request):
+    """
+    To show the three latest reviews.
+    """
     latest_reviews = Review.objects.order_by('-created_on')[:3]
     return render(request, 'blog/index.html', {'latest_reviews': latest_reviews})
 
-# To show all reviews as paginated list, 6 per page.
 def show_reviews(request):
+    """
+    To show all reviews as paginated list, 6 per page.
+    """
     reviews_list = Review.objects.all()
     paginator = Paginator(reviews_list, 6)
     page_number = request.GET.get('page')
     reviews_page = paginator.get_page(page_number)
 
-    return render(request, 'blog/show_reviews.html', {'reviews_page': reviews_page})
+    return render(
+        request, 'blog/show_reviews.html', {'reviews_page': reviews_page})
 
-# To show a certain review upscaled and with content.
 def review_detail(request, review_id):
-    # https://www.geeksforgeeks.org/get_object_or_404-method-in-django-models/
+    """
+    To show a certain review upscaled and with content.
+    """
     review = get_object_or_404(Review, id=review_id)
     comments = review.comment_set.all()
 
@@ -48,9 +55,9 @@ def review_detail(request, review_id):
             "comment_form": comment_form,
     })
 
-#To add a review.
 @login_required
 def add_review(request):
+    """ To add a new review """
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -64,9 +71,9 @@ def add_review(request):
         form = ReviewForm()
     return render(request, 'blog/add_review.html', {'form': form})
 
-#To edit a review
 @login_required
 def edit_review(request, review_id):
+    """ To edit an existing review """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
@@ -80,9 +87,9 @@ def edit_review(request, review_id):
         form= ReviewForm(instance=review)
     return render(request, 'blog/edit_review.html', {'form': form})
 
-#To delete a review
 @login_required
 def delete_review(request, review_id):
+    """ To delete an existing review """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     if request.method == 'POST':
         review.delete()
@@ -92,6 +99,9 @@ def delete_review(request, review_id):
 
 #To show all golfcourses
 def show_golfcourses(request):
+    """
+    To show all golfcourses as paginated list, 8 per page.
+    """
     golfcourses_list = GolfCourse.objects.all()
     paginator = Paginator(golfcourses_list, 8) 
     page_number = request.GET.get('page')
@@ -99,9 +109,9 @@ def show_golfcourses(request):
     
     return render(request, 'blog/show_golfcourses.html', {'golfcourses_page': golfcourses_page})
 
-#To edit comment
 @login_required
 def edit_comment(request, comment_id):
+    """ To edit a comment """
     comment = get_object_or_404(Comment, id=comment_id)
     if comment.user != request.user:
         raise Http404
@@ -120,6 +130,7 @@ def edit_comment(request, comment_id):
 #To delete a comment
 @login_required
 def delete_comment(request, comment_id):
+    """ To delete a comment """
     comment = get_object_or_404(Comment, id=comment_id)
     if comment.user != request.user:
         raise Http404

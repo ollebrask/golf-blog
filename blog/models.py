@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator, MinLeng
 
 # Create your models here.
 class GolfCourse(models.Model):
+    """ GolfCourse model """
     name = models.CharField(
         max_length=50,
         unique=True,
@@ -26,6 +27,7 @@ class GolfCourse(models.Model):
         ordering = ['name']
 
 class Review(models.Model):
+    """ Review model """
     title = models.CharField(
         max_length=100,
         unique=True,
@@ -49,6 +51,7 @@ class Review(models.Model):
         ordering = ['-created_on']
 
 class Comment(models.Model):
+    """ Comment model """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
     content = models.TextField(
