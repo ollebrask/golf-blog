@@ -1,112 +1,200 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Golf Reviews
 
-Welcome Olle Brask,
+![Responsive Mockup](documentation/responsive-mockup.png)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+*The link to [Golf Reviews](https://golfreview-blog-6ddabaa03e1e.herokuapp.com/)*
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **April 26, 2024**
+The Golf Reviews site is a place where you can post reviews about a selection of golfcourses.
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+---
+## User Stories
 
-`python3 -m http.server`
+*The link to [User Story Cards GitHub Projects](https://github.com/users/ollebrask/projects/3/views/1)*
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+  * As a visitor, i want to read interesting golfreviews about popular golfcourses
+  * As a visitor, i want to easily navigate through the website.
+  * As a registered user, i want post golf reviews and comment other users reviews. 
+  * As a superuser, i want to be able to add new golfcourses to the site.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
 
 ---
 
-Happy coding!
+## Features
+  
+
+Homepage
+
+  
+  ![Index page](documentation/home.png)
+
+
+ Reviews page
+
+  ![Reviews](documentation/reviews.png)
+
+ Golfcourses page
+
+  ![Golfcourses](documentation/golfcourses.png)
+
+ Login page 
+
+  ![Login](documentation/login.png)
+
+ Register page
+
+  ![Register](documentation/register.png)
+
+ Reviews page when logged in (Add reviews shown and edit/delete own reviews)
+
+  ![Reviews logged in](documentation/reviews-signedin.png)
+
+ Review details page
+
+  ![Review details](documentation/review-details.png)
+
+ Comments area, under the review details
+
+  ![Comments](documentation/comments.png)
+
+ 
+---
+
+## Entity-Relationship Diagram
+
+  ![ERD](documentation/erd.png)
+
+* The ERD was created using [Lucidchart](https://www.lucidchart.com/).
+
+---
+## Technologies Used
+
+- ### Languages:
+    
+    + [Python 3.12.2](https://www.python.org/downloads/release/python-3122/): the primary language used to develop the server-side of the website.
+    + [JS](https://www.javascript.com/): I didn't write any own JS code, but it is included.
+    + [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): the markup language used to create the website.
+    + [CSS](https://developer.mozilla.org/en-US/docs/Web/css): the styling language used to style the website.
+
+- ### Frameworks and libraries:
+
+    + [Django](https://www.djangoproject.com/): python framework used to create all the logic.
+
+- ### Other tools:
+
+    + [Git](https://git-scm.com/): the version control system used to manage the code.
+    + [Pip3](https://pypi.org/project/pip/): the package manager used to install the dependencies.
+    + [Gunicorn](https://gunicorn.org/): the webserver used to run the website.
+    + [Psycopg2](https://pypi.org/project/psycopg2/): the database driver used to connect to the database.
+    + [Django-allauth](https://django-allauth.readthedocs.io/en/latest/): the authentication library used to create the user accounts.
+    + [Heroku](https://dashboard.heroku.com/): the cloud platform used to host the website.
+    + [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/): the cloud database used to store all the data.
+    + [GitHub](https://github.com/): used to host the website's source code.
+    + [GitPod](https://gitpod.io/): the IDE used to develop the website.
+    + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
+    + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.
+    + [Favicon](https://favicon.io/) was used for the favicon.
+    + [Bootstrap 5.3](https://getbootstrap.com/) was used for style and responsiveness for website.
+    + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
+    + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
+    + [CI Python Linter](https://pep8ci.herokuapp.com/): was used to validate Python code for the website.
+
+
+---
+## Bugs
+
++ **Solved bugs**
+
+1. In review_detail.html the content wasn't rendered as html. When viewed, the user would see paragraph tags before and after the text.
+
+    - I found a filter in django "|safe", i added it to {{ review.content|safe }} and then it was rendered as html.
+
+2. Ive encountered a lot of errors, because of typos. Djangos own debugging has been very helpful, showing exactly what is wrong throughout the whole project.
+
++ **Unsolved bugs**
+
+None
+
+---
+## Testing
+
+Please refer to the [TESTING.md](TESTING.md) file for all test related documentation.
+
+---
+## Deployment
+
+- The program was deployed to [Heroku](https://dashboard.heroku.com).
+
+1. Open the repository in GitPod
+
+2. Install the dependencies:
+
+    - Open the terminal window and type:
+    - `pip3 install -r requirements.txt`
+
+3. Create a `env.py` file. Add your secret key and database url
+
+    ```python
+    import os
+
+      os.environ.setdefault['SECRET_KEY', 'Your secret key']
+      os.environ.setdefault['DATABASE_URL', 'Your database url']
+    ```
+
+
+4. Run the following commands in a terminal to make migrations: 
+    - `python3 manage.py makemigrations`
+    - `python3 manage.py migrate`
+5. Create a superuser to get access to the admin environment.
+    - `python3 manage.py createsuperuser`
+    - Enter the required information (your username, email and password).
+
+
+### To deploy the project to Heroku:
+
+1.  Login to your account at [Heroku](https://dashboard.heroku.com)
+
+2.	Click "New" to create a new app.
+
+3.	Select a unique name, selected the region, and click Create app.
+
+4.	Within the created app, select the tab, Settings.
+
+5.	At the Config Vars section, click Reveal Config Vars.
+
+6.	Add Config Vars (with their associated values, from env.py):
+- `SECRET_KEY`
+- `DATABASE_URL`
+
+7. In  `settings.py` file, make sure debug is set to false:
+
+```
+DEBUG = False
+```
+
+8.	Commit and push to GitHub
+
+9.	Back to Heroku, go to the deployment tab.
+
+10.	Select GitHub as the deployment method and connected to GitHub.
+
+11.	Search for repository name and Connect.
+
+12.	Click Deploy Branch. Click the View button when it is done.
+
+---
+
+## Credits
+
+- [Heroku](https://www.heroku.com/) for hosting the site.
+- For tips and help: [Stackoverflow](https://stackoverflow.com)
+- Github were used to store my repository: [GitHub](https://github.com)
+- Bootstrap Documents [w3schools](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- Django documentation for learning [Django](https://docs.djangoproject.com/en/5.0/)
+- Code Institutes Codestar blog Walkthrough
+
+---
+## Acknowledgements
+
+My mentor for valuable feedback! [Iuliia Konovalova](https://github.com/IuliiaKonovalova)
