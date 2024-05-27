@@ -190,7 +190,7 @@ DEBUG = False
 - [Heroku](https://www.heroku.com/) for hosting the site.
 - For tips and help: [Stackoverflow](https://stackoverflow.com)
 - Github were used to store my repository: [GitHub](https://github.com)
-- Bootstrap Documents [w3schools](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- Bootstrap Documents [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - Django documentation for learning [Django](https://docs.djangoproject.com/en/5.0/)
 - Code Institutes Codestar blog Walkthrough
 
