@@ -4,8 +4,13 @@
 
 *The link to [Golf Reviews](https://golfreview-blog-6ddabaa03e1e.herokuapp.com/)*
 
-The Golf Reviews site is a place where you can post reviews about a selection of golfcourses.
+## Golf Reviews is a dedicated platform for golf enthusiasts who want to read and share reviews of various golf courses.
 
+### Detailed Reviews:
+* Read about other golfers' experiences on different golf courses.
+
+### User-Generated Content:
+* Share your own experiences and contribute to our growing collection of reviews. Registered users can write reviews, leave comments, and rate golf courses.
 
 ---
 ## User Stories
